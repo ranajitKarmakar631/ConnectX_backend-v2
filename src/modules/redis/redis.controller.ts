@@ -11,12 +11,12 @@ export class RedisController {
     handleGetUserOnline = async (req: Request, res: Response): Promise<any> => {
         try {
             const { _id } = req?.body;
-            console.log(req?.body);
-            console.log('userdata ', _id);
+            // console.log(req?.body);
+            // console.log('userdata ', _id);
             const userData = await UserProfileModel.findOne({
                 _id
             });
-            console.log(userData)
+            // console.log(userData)
             if (userData) {
                 const isOnline = await getCache<boolean>(`online:${userData.userId}`);
                 if (isOnline) {

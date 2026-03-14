@@ -59,9 +59,7 @@ export const handleChatEvents = (io: Server, socket: Socket) => {
 
   socket.on("start:calling", (data: any) => {
     const { chatId, senderName, senderId,callType,receiverName, receiverId, offer } = data;
-    console.log('dataaaaaaaaaa',senderName);
     const receiverSocketId = onlineUsers.get(receiverId);
-    console.log(data);
     if (receiverSocketId) {
       io.to(receiverSocketId).emit("incoming:call", {
         chatId,
